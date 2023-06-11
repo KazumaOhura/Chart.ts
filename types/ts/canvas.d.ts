@@ -1,3 +1,4 @@
+import { RGB } from './color';
 import { Circle, Size, type Direction, Point } from './util';
 export declare class Canvas {
     private _canvas;
@@ -8,8 +9,8 @@ export declare class Canvas {
     private getMousePos;
     get mousePos(): Point;
     get size(): Size;
-    drawCircle(circle: Circle): void;
-    drawCircle(circle: Circle, angle: number): void;
-    drawCircle(circle: Circle, startAngle: number, endAngle: number): void;
-    drawHalfCircle(circle: Circle, direction: Direction): void;
+    drawCircle(circle: Circle, color: RGB): void;
+    drawCircle(circle: Circle, color: RGB, angle: number): void;
+    drawCircle(circle: Circle, color: RGB, startAngle: number, endAngle: number): void;
+    drawHalfCircle(circle: Circle, color: RGB, direction: Direction): void;
 }

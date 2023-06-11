@@ -1,33 +1,39 @@
-export class Color {
+export interface Color {
     
 }
 
+export class RGB implements Color{
+    private _red: number;
+    private _green: number;
+    private _blue: number;
+    private readonly MIN_VALUE:number = 0;
+    private readonly MAX_VALUE:number = 255;
 
-export type Red = Uint8ClampedArray;
-export type Green = Uint8ClampedArray;
-export type Blue = Uint8ClampedArray;
-
-export class RGB extends Color {
-    private _red: Red;
-    private _green: Green;
-    private _blue: Blue;
-
-    constructor(red: Red, green: Green, blue: Blue) {
-        super();
+    constructor(red: number, green: number, blue: number) {
+        if(red < this.MIN_VALUE || green < this.MIN_VALUE || blue < this.MIN_VALUE) throw new RangeError("Arguments are under 0");
+        if(red > this.MAX_VALUE || green > this.MAX_VALUE || blue > this.MAX_VALUE) throw new RangeError("Arguments are over 255");
         this._red = red;
         this._green = green;
         this._blue = blue;
     }
 
-    public get red(): Red{
+    /**
+     * @deprecated
+     */
+    public get rgb(): string{
+        return "";
+        //return `rgba(${},${},${this.},${0})`;
+    }
+
+    public get red(): number{
         return this._red;
     }
 
-    public get green(): Green{
+    public get green(): number{
         return this._green;
     }
 
-    public get blue(): Blue{
+    public get blue(): number{
         return this._blue;
     }
 }

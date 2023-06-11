@@ -38,12 +38,13 @@ export class Canvas {
     public drawCircle(circle: Circle, color: RGB, angle: number): void;
     public drawCircle(circle: Circle, color: RGB, startAngle: number, endAngle: number): void;
 
-    public drawCircle(circle: Circle, color: RGB, startAngle: number = 0, endAngle: number = 360): void {
+    public drawCircle(circle: Circle, color: RGB, startAngle: number = 360, endAngle: number = 0): void {
         if (!this._context) {
             throw new ReferenceError("_context is null.");
         }
+        this._context.beginPath();
         this._context.arc(circle.pos.x, circle.pos.y, circle.radius, startAngle / 180 * Math.PI, endAngle / 180 * Math.PI, true);
-        this._context.strokeStyle = `rgb(${color.red.toString()}, ${color.green.toString()}, ${color.blue.toString()})`
+        this._context.fillStyle = `rgb(${color.red},${color.green},${color.blue})`;
         this._context.fill();
     }
 

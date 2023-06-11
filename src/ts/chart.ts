@@ -1,5 +1,6 @@
 import { Canvas } from './canvas';
-import { type Red, type Green, type Blue, RGB } from './color';
+import { RGB } from './color';
+
 import { Circle, Point, Size } from './util';
 
 export declare type GraphType = "bar" | "line" | "circle" | "band"
@@ -20,7 +21,7 @@ export class ChartElement extends HTMLElement {
         this._size = new Size(parseInt(width), parseInt(width));
 
         this._canvas = new Canvas(this._size);
-        this.appendChild(this._canvas.element);
+        //this.appendChild(this._canvas.element);
     }
 
     public get width(): number {
@@ -32,7 +33,7 @@ export class ChartElement extends HTMLElement {
     }
 
     public connectedCallback() {
-        this.add("band", [{ x: 1, y: 20 }, { x: 2, y: 15 }, { x: 3, y: 40 }]);
+
     }
 
     public disconnectedCallback() {
@@ -57,7 +58,7 @@ export class ChartElement extends HTMLElement {
         console.log(data);
         switch (graph) {
             case 'bar':
-                this._canvas.drawCircle(new Circle(50, new Point(100, 100)), new RGB(new Uint8ClampedArray(), new Uint8ClampedArray(), new Uint8ClampedArray()),360);
+                this._canvas.drawCircle(new Circle(50, new Point(100, 100)), new RGB(0, 255, 0), 360);
                 break;
             case 'line':
                 break;
